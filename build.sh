@@ -8,7 +8,7 @@ git clone --depth=1 https://github.com/phhusson/vendor_hardware_overlay.git
 fi
 
 echo "Building overlay APK"
-( cd build && ./build.sh ../BromiteWebView/Android.mk )
+( cd build && ./build.sh ../ZBWebView/Android.mk )
 
 echo "Building flashable package (zip)"
 mkdir build/.temp
@@ -16,10 +16,10 @@ mkdir -p build/.temp/META-INF/com/google/android
 cp update-binary build/.temp/META-INF/com/google/android
 echo "# Dummy file; update-binary is a shell script." > build/.temp/META-INF/com/google/android/updater-script
 mkdir -p build/.temp/system/addon.d
-cp 39-bromite-webview.sh build/.temp/system/addon.d
+cp 39-zb-webview.sh build/.temp/system/addon.d
 mkdir -p build/.temp/vendor/overlay
-cp build/treble-overlay-bromite-webview.apk build/.temp/vendor/overlay
-( cd build/.temp && zip -r - . > ../BromiteSystemWebViewOverlay.zip . ) &> /dev/null
+cp build/treble-overlay-zb-webview.apk build/.temp/vendor/overlay
+( cd build/.temp && zip -r - . > ../ZBSystemWebViewOverlay.zip . ) &> /dev/null
 rm -r build/.temp
 
 echo "Building Magisk module (zip)"
@@ -29,7 +29,7 @@ curl -sL https://github.com/topjohnwu/Magisk/raw/master/scripts/module_installer
 test -s build/.temp/META-INF/com/google/android/update-binary
 echo "#MAGISK" > build/.temp/META-INF/com/google/android/updater-script
 mkdir -p build/.temp/system/vendor/overlay
-cp build/treble-overlay-bromite-webview.apk build/.temp/system/vendor/overlay
+cp build/treble-overlay-zb-webview.apk build/.temp/system/vendor/overlay
 cp module.prop build/.temp/
-( cd build/.temp && zip -r - . > ../BromiteSystemWebViewMagisk.zip . ) &> /dev/null
+( cd build/.temp && zip -r - . > ../ZBSystemWebViewMagisk.zip . ) &> /dev/null
 rm -r build/.temp

@@ -2,8 +2,8 @@
 #
 # ADDOND_VERSION=2
 #
-# /system/addon.d/99-bromite-webview-overlay.sh
-# During an Android upgrade, this script backs up treble-overlay-bromite-webview.apk,
+# /system/addon.d/99-zb-webview-overlay.sh
+# During an Android upgrade, this script backs up treble-overlay-zb-webview.apk,
 # located in either /vendor/overlay/ or /system/product/overlay/,
 # the partitions are formatted and reinstalled, then the file is restored.
 #
@@ -14,7 +14,7 @@
 
 list_files() {
 cat <<EOF
-product/overlay/treble-overlay-bromite-webview.apk
+product/overlay/treble-overlay-zb-webview.apk
 EOF
 }
 

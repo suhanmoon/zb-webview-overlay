@@ -1,6 +1,6 @@
-id=bromite-system-webview
-name=Bromite System WebView Overlay
-version=v0.4
-versionCode=00004
+id=zb-system-webview
+name=ZB System WebView Overlay
+version=v0.5
+versionCode=00005
 author=arovlad
-description=Enable the use of Bromite as the system WebView
+description=Enable the use of ZB as the system WebView

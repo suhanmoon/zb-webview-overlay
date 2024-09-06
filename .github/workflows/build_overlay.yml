@@ -24,4 +24,4 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: Flashable ZIP
-        path: build/BromiteSystemWebViewOverlay.zip
+        path: build/ZBSystemWebViewOverlay.zip

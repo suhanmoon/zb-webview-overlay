@@ -4,7 +4,7 @@
 set -e
 
 # Extract the package to a temporary location
-unzip -oq ${3} -d "/tmp/BromiteWebViewInstaller"
+unzip -oq ${3} -d "/tmp/ZBWebViewInstaller"
 
 # Create faux mountpoints
 mkdir /picodroid_system
@@ -13,15 +13,15 @@ mkdir /picodroid_system
 mount -o rw $(readlink -f $(cd /dev && find /dev/block -type l -name system$(getprop ro.boot.slot_suffix) | head -n 1 )) /picodroid_system
 
 # Copy the overlay to the appropriate location
-cp /tmp/BromiteWebViewInstaller/system/product/overlay/treble-overlay-bromite-webview.apk /picodroid_system/system/product/overlay
+cp /tmp/ZBWebViewInstaller/system/product/overlay/treble-overlay-zb-webview.apk /picodroid_system/system/product/overlay
 
 # Copy the OTA survival script to the appropriate location
 if [ -d /picodroid_system/system/addon.d ]
-    then cp /tmp/BromiteWebViewInstaller/system/addon.d/39-bromite-webview.sh /picodroid_system/system/addon.d
+    then cp /tmp/ZBWebViewInstaller/system/addon.d/39-zb-webview.sh /picodroid_system/system/addon.d
 fi
 
 # Make the script executable
-chmod 755 /picodroid_system/system/addon.d/39-bromite-webview.sh
+chmod 755 /picodroid_system/system/addon.d/39-zb-webview.sh
 
 # Unmount the previously mounted partitions
 umount -l /picodroid_system
@@ -30,8 +30,8 @@ umount -l /picodroid_system
 rmdir /picodroid_system
 
 # Clean up the installation files
-rm -rf /tmp/BromiteWebViewInstaller
+rm -rf /tmp/ZBWebViewInstaller
 
 # Inform the user that the update has been successful
 echo -e "ui_print Update successfully installed!" >> /proc/self/fd/${2}
-echo -e "ui_print You can now install Bromite SystemWebView as a regular app!" >> /proc/self/fd/${2}
+echo -e "ui_print You can now install ZB SystemWebView as a regular app!" >> /proc/self/fd/${2}
